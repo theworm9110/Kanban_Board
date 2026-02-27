@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --board-bg: #0d1117;
+  --column-bg: #161b22;
+  --card-bg: #21262d;
+  --border: #30363d;
+}
+
+body {
+  background: var(--board-bg);
+  min-height: 100vh;
+}

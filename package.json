@@ -1,0 +1,43 @@
+{
+  "name": "kanban-board",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:next\" \"npm run dev:ws\"",
+    "dev:next": "next dev -p 3500",
+    "dev:ws": "cross-env WS_PORT=3501 node server/ws-server.js",
+    "build": "next build",
+    "start": "concurrently \"npm run start:next\" \"npm run start:ws\"",
+    "start:next": "next start -p 3500",
+    "start:ws": "cross-env WS_PORT=3501 node server/ws-server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "clsx": "^2.1.0",
+    "ioredis": "^5.3.2",
+    "lucide-react": "^0.294.0",
+    "next": "14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/uuid": "^9.0.7",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "cross-env": "^10.1.0",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0"
+  }
+}
