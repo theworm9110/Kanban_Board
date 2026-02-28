@@ -111,6 +111,17 @@ You can deploy the application using any container‑capable host or a platform�
    Open `http://localhost:3500` to verify the app.
 3. Push the image to a registry and pull/run it on your server, or simply copy the above `docker-compose.yml` to the host and run `docker compose up -d`.
 
+### Continuous Deployment via GitHub Actions
+
+A workflow (`.github/workflows/deploy.yml`) is included that triggers on every push to `main`. It:
+
+1. checks out the repo and installs dependencies
+2. lints and builds the Next.js project
+3. logs in to GitHub Container Registry using `${{ secrets.GITHUB_TOKEN }}`
+4. builds and pushes the Docker image to `ghcr.io/<your‑owner>/kanban-board:latest`
+
+You can change the tag or registry by editing the workflow.  No additional secrets are required unless you push to a different registry.
+
 ### Heroku / Render / Railway style (Git‑push deployment)
 
 1. A `Procfile` is included:
