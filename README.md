@@ -94,6 +94,34 @@ Copy `.env.example` to `.env.local` and adjust:
 | `npm run build` | Build Next.js for production |
 | `npm run start` | Run production build + WebSocket server |
 
+## Deployment
+
+You can deploy the application using any container‑capable host or a platform‑as‑a‑service. Two common approaches are described below; follow the steps on your development machine (project root) and then push the resulting files to GitHub as usual.
+
+### Docker / Docker Compose (any cloud VM or droplet)
+
+1. A `Dockerfile` is already included; build the image locally:
+   ```bash
+   docker build -t kanban-board:latest .
+   ```
+2. Optionally run everything locally with Redis:
+   ```bash
+   docker compose up --build
+   ```
+   Open `http://localhost:3500` to verify the app.
+3. Push the image to a registry and pull/run it on your server, or simply copy the above `docker-compose.yml` to the host and run `docker compose up -d`.
+
+### Heroku / Render / Railway style (Git‑push deployment)
+
+1. A `Procfile` is included:
+   ```text
+   web: npm run start:next
+   ws:  npm run start:ws
+   ```
+2. Create an app on the platform and connect your GitHub repository.
+3. Set environment variables (`WS_PORT=3501`, `REDIS_URL`, etc.) and add a managed Redis addon if available.
+4. Push your code (`git push heroku main` or let the service build on each commit).
+
 ## License
 
 MIT
